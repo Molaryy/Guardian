@@ -66,7 +66,9 @@ const Services = () => {
             POC president.
             Software Developper, Back-end & coordinator.
           </p>
-          <button>Go</button>
+          <a href="https://www.linkedin.com/in/mohammed-jbilou768/">
+              <button className="linkedin">Go to Linkedin</button>
+          </a>
         </motion.div>
         <motion.div
           className="box"
@@ -78,7 +80,9 @@ const Services = () => {
             POC vice-president and IA module manager.
             IA Developpper + API.
           </p>
-          <button>Go</button>
+          <a href="https://www.linkedin.com/in/matthias-von-rakowski-97a1b0265/">
+              <button className="linkedin">Go to Linkedin</button>
+          </a>
         </motion.div>
         <motion.div
           className="box"
@@ -90,7 +94,9 @@ const Services = () => {
             POC resident.
             Back-end Developper + NFTs.
           </p>
-          <button>Go</button>
+          <a href="https://www.linkedin.com/in/gustave-delecroix-944992263/">
+            <button className="linkedin">Go to Linkedin</button>
+          </a>
         </motion.div>
         <motion.div
           className="box"
@@ -102,7 +108,9 @@ const Services = () => {
             POC resident.
             Front-end Developper + Demo.
           </p>
-          <button>Go</button>
+          <a href="">https://www.linkedin.com/in/hugo-hamet/
+              <button className="linkedin">Go to Linkedin</button>
+          </a>
         </motion.div>
         <motion.div
           className="box"
@@ -114,7 +122,9 @@ const Services = () => {
             POC resident.
             Front-end Developper.
           </p>
-          <button>Go</button>
+          <a href="https://www.linkedin.com/in/elie-stroun-6b91372a1/">
+              <button className="linkedin">Go to Linkedin</button>
+          </a>
         </motion.div>
       </motion.div>
     </motion.div>

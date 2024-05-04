@@ -1,4 +1,4 @@
-import "./hero.scss";
+import "./logo.scss";
 import { motion } from "framer-motion";
 
 const textVariants = {
@@ -37,7 +37,7 @@ const sliderVariants = {
   },
 };
 
-const Hero = () => {
+const Logo = () => {
   return (
     <div className="hero">
       <div className="wrapper">
@@ -73,11 +73,9 @@ const Hero = () => {
       >
         Bring control between art and IA
       </motion.div>
-      <div className="imageContainer">
-        <img src="/logo-white.png" alt="" />
-      </div>
+      
     </div>
   );
 };
 
-export default Hero;
+export default Logo;

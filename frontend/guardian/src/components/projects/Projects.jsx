@@ -4,21 +4,21 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const items = [
   {
-    id: 1,
+    id: 'gen-ia',
     title: "See our demo",
     img: "../public/ia-gen.jpg",
     desc: "A first glance at our main objectiv : being able to associate a NFT for your IA generated projects.",
   },
   {
-    id: 2,
+    id: 'logo',
     title: "A passport for your IA generated projects",
     img: "../public/logo-white.png",
     desc: "The idea is to be in advance on all the changes comming in the IA world. New legislation and concerns",
   },
   {
-    id: 3,
+    id: 'gen-ia',
     title: "A detection and comparison system of art projects",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "../public/gen-ia2.jpg",
     desc: "We want to offer a search tool in our database to certify your production and guarantee transparency in the artistic professions (cinema, drawings, literature) or with regard to faculties (dissertations).",
   },
 ];

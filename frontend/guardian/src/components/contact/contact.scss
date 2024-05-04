@@ -35,6 +35,22 @@
         font-size: 36px;
       }
     }
+    .social {
+      display: flex;
+      margin-top: 40px;
+      gap: 20px;
+      width: fit-content;
+      border-radius: 10px;
+
+      .poc-logo{
+        width: 70px;
+        height: 28px;
+      }
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
 
     span {
       font-weight: 300;

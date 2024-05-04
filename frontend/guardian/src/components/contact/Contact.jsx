@@ -57,16 +57,24 @@ const Contact = () => {
       <motion.div className="textContainer" variants={variants}>
         <motion.h1 variants={variants}>Let’s work together</motion.h1>
         <motion.div className="item" variants={variants}>
-          <h2>Mail</h2>
-          <span>hello@react.dev</span>
-        </motion.div>
-        <motion.div className="item" variants={variants}>
           <h2>Address</h2>
-          <span>Hello street New York</span>
+          <span>14-16 Rue Voltaire, 94270 Le Kremlin-Bicêtre</span>
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Phone</h2>
-          <span>+1 234 5678</span>
+          <span>+33 6 62 43 00 03</span>
+          <div className="social">
+          
+          <a href="https://www.instagram.com/pocinnovation/">
+            <img src="/instagram.png" alt="" />
+          </a>
+          <a href="https://www.youtube.com/@PoCInnovation">
+            <img src="/youtube.png" alt="" />
+          </a>
+          <a href="https://www.poc-innovation.fr/">
+            <img className="poc-logo" src="/poc.png" alt="" />
+          </a>
+        </div>
         </motion.div>
       </motion.div>
       <div className="formContainer">
@@ -106,9 +114,11 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
         >
+          
           <input type="text" required placeholder="Name" name="name"/>
           <input type="email" required placeholder="Email" name="email"/>
           <textarea rows={8} placeholder="Message" name="message"/>
+          
           <button>Submit</button>
           {error && "Error"}
           {success && "Success"}

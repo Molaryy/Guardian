@@ -1,8 +1,7 @@
 import Test from "./Test";
 import "./app.scss";
 import Contact from "./components/contact/Contact";
-import Cursor from "./components/cursor/Cursor";
-import Hero from "./components/Logo/Hero";
+import Logo from "./components/logo/Logo";
 import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Projects from "./components/projects/Projects";
@@ -13,16 +12,16 @@ const App = () => {
     <div>
       <section id="Homepage">
         <Navbar />
-        <Hero />
+        <Logo/>
       </section>
-      <section id="Services">
+      <section id="Services"> 
         <Parallax type="services" />
       </section>
       <section>
         <Services />
       </section>
       <section id="Projects">
-        <Parallax type="Projects" />
+        <Parallax type="Projects"/>
       </section>
       <Projects />
       <section id="Contact">
