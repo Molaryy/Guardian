@@ -44,3 +44,47 @@
     margin-left: 0.5rem;
   }
 }
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+button:hover {
+  transition: all 0.15s ease 0s;
+  filter: brightness(150%);
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 300;
+  color: rgb(167, 77, 189);
+}
+
+.ellipsis {
+  padding: 0;
+
+}
+
+.button-sign {
+  margin-left: 2rem;
+}
+
+.wallet-bar {
+  background-color: rebeccapurple;
+  border-radius: 15px;
+  display: flex;
+  width: 180px;
+  height: 35px;
+  align-content: center;
+  align-items: center;
+
+  p {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
