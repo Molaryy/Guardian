@@ -1,11 +1,8 @@
-import os
 import openai
-import sys
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 
 class LLM():
     def __init__(self, model="dall-e-3", chat_history=[], configuration_prompt="dalle"):
-        # key = os.getenv("OPENAI_API_KEY")
         self.client = openai.OpenAI()
         self.model = model
         self.chat_history = chat_history
@@ -23,21 +20,30 @@ class LLM():
 llm = LLM()
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/openai/endpoint', methods=['POST', 'OPTIONS'])
 def get_prompt():
-    try :
-        # prompt = "An owl destrying chains"
+    if request.method == 'OPTIONS':
+        return _build_cors_preflight_response()
+    try:
         json_file = request.get_json()
-        print(json_file, file=sys.stderr)
+        app.logger.info(json_file)
         prompt = json_file['prompt']
-        print(prompt, file=sys.stderr)
     except Exception as e:
-        return jsonify({"error": "404"})
+        app.logger.error(e)
+        return _corsify_actual_response(jsonify({"error": e}))
     msg = llm.ask_gpt(prompt)
-    print(jsonify({"url": msg}), file=sys.stderr)
-    return jsonify({"url": msg})
-    # respond = requests.post("http://localhost:5000/openai/images/generate", json={"url": msg})
-    # return jsonify(respond.json())
+    return _corsify_actual_response(jsonify({"url": msg}))
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 if __name__ == "__main__":
     app.run()
