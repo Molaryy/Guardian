@@ -1,5 +1,6 @@
 import os
 import openai
+import sys
 from flask import Flask, jsonify, request
 
 class LLM():
@@ -22,16 +23,18 @@ class LLM():
 llm = LLM()
 app = Flask(__name__)
 
-@app.route('/openai/endpoint', endpoint='url', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_prompt():
     try :
+        # prompt = "An owl destrying chains"
         json_file = request.get_json()
+        print(json_file, file=sys.stderr)
         prompt = json_file['prompt']
+        print(prompt, file=sys.stderr)
     except Exception as e:
         return jsonify({"error": "404"})
     msg = llm.ask_gpt(prompt)
-    if msg.isalnum():
-        return jsonify({"error": msg})
+    print(jsonify({"url": msg}), file=sys.stderr)
     return jsonify({"url": msg})
     # respond = requests.post("http://localhost:5000/openai/images/generate", json={"url": msg})
     # return jsonify(respond.json())
