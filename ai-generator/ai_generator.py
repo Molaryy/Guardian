@@ -2,20 +2,21 @@ import os
 import openai
 from flask import Flask, jsonify, request
 
-class LLM:
-    def __init__(self, model="dall-e-3", chat_history=[], configuration_prompt="you are chatGPt"):
-        self.client = os.environ.get("OPENAI_API_KEY")
+class LLM():
+    def __init__(self, model="dall-e-3", chat_history=[], configuration_prompt="dalle"):
+        # key = os.getenv("OPENAI_API_KEY")
+        self.client = openai.OpenAI()
         self.model = model
         self.chat_history = chat_history
         self.configuration_prompt = configuration_prompt
 
     def ask_gpt(self, user_input: str):
-        response = self.client.images.generate(
+        response = (self.client.images.generate(
             model=self.model,
             prompt=user_input,
             size="1024x1024",
             quality="standard",
-            n=1)
+            n=1))
         return response.data[0].url
 
 llm = LLM()
