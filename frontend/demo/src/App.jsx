@@ -27,15 +27,17 @@ function FormContents() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://localhost:5000/openai/endpoint", JSON.stringify({
+      let res = await fetch("http://localhost:5000/openai/endpoint", {
         method: "POST",
-        prompt: prompt
-      }));
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          prompt: prompt
+        })
+      });
       let resJson = await res.json();
-      console.log(resJson)
-      if (res.status === 200) {
-        setMessage("User created successfully");
-      } else {
+      if (res.status != 200) {
         console.log("There was an error:")
         console.log(res)
       }
@@ -51,7 +53,7 @@ function FormContents() {
         <textarea
           id="prompt"
           value={prompt}
-          placeholder="Your "
+          placeholder="..."
           cols={60}
           onChange={(e) => setPrompt(e.target.value)}
         />
