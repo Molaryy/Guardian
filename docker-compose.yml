@@ -1,16 +1,6 @@
 version: '3'
 
 services:
-  database:
-    container_name: guardian_db
-    image: postgres:12.8-alpine
-    env_file:
-      - .env
-    ports:
-      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
-    volumes:
-      - db:/var/lib/postgresql/data
-    restart: always
   backend:
     container_name: guardian_back
     env_file:
@@ -21,5 +11,3 @@ services:
     depends_on:
       - database
     restart: always
-volumes:
-  db:
