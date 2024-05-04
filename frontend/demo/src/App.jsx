@@ -5,17 +5,17 @@ import './App.css'
 function HeaderContents() {
   return (
     <>
-      <div>
-        <a href="/">
-          <img src={GuardianLogo} className="logo" alt="Guardian logo" draggable={false} />
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/">Generate</a></li>
-          <li><a href="/">Login</a></li>
-        </ul>
+      <nav style={{ position: 'fixed', top: 0, height: '12%', width: '100%', backgroundColor: 'black', padding: '0px 10px', color: '#fff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="/">
+            <img src={GuardianLogo} className="logo" alt="Guardian logo" draggable={false} />
+          </a>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Generate</a></li>
+            <li><a href="/">Login</a></li>
+          </ul>
+        </div>
       </nav>
     </>
   )
