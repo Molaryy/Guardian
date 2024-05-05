@@ -1,6 +1,7 @@
 import { Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import useFilePreview from './UseFilePreview';
+import './logo.scss'
 
 
 const { Dragger } = Upload;

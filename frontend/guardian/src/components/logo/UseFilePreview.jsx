@@ -12,7 +12,8 @@ const useFilePreview = () => {
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
-    });
+    }
+    );
 
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {

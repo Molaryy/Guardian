@@ -1,5 +1,27 @@
 @import "../../app.scss";
 
+.ant-card-body {
+  height: 300px;
+}
+
+.ant-upload-text {
+  color: #0c0c1d !important;
+}
+
+.anticon {
+  path {
+    color: rebeccapurple;
+  }
+}
+
+.ant-upload-list-item-container {
+  margin-left: 1rem;
+}
+
+.ant-upload {
+  background-color: #ffffff;
+}
+
 .hero {
   height: calc(100vh - 100px);
   overflow: hidden;
