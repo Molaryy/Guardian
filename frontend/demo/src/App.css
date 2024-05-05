@@ -14,7 +14,7 @@ header {
   font-weight: 400;
 }
 
-header nav { 
+header nav {
   margin: 0px 0rem; 
   display: inline-block;
 }
@@ -44,17 +44,11 @@ nav li {
   margin-right: 50px;
 }
 
-nav a {
-  box-shadow: inset 0 0 0 0 #646cffaa;
+nav .img {
   text-decoration: none;
   color: white;
   margin: 0 -.25rem;
   padding: 0 .25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-}
-
-nav a:hover {
-  box-shadow: inset 100px 0 0 0 #646cffaa;
 }
 
 form {
@@ -74,7 +68,8 @@ textarea {
   padding: 10px;
   max-width: 100%;
   line-height: 1.5;
-  resize: vertical;
+  resize: none;
+  columns: 60;
   border-radius: 5px;
   border: 1px solid #646cffaa;
   box-shadow: 1px 1px 1px #646cffaa;
@@ -84,6 +79,18 @@ textarea {
 label {
   display: block;
   margin-bottom: 10px;
+}
+
+.image {
+  overflow: auto;
+  padding-inline: 1rem;
+  width: 100vh;
+  height: 100vh;
+  display: 'flex';
+  padding-left: 100px;
+  margin-left: 100px;
+  background-color: greenyellow;
+  /* background-image: 'url(${background})'; */
 }
 
 body {

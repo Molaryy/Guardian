@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GuardianLogo from './assets/logo.png'
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import NoPage from "./pages/NoPage"; 
+import NoPage from "./pages/NoPage";
 import './App.css'
 
 function HeaderContents() {
@@ -11,12 +10,11 @@ function HeaderContents() {
     <>
       <nav style={{ position: 'fixed', top: 0, left: 0, height: '12%', width: '100%', backgroundColor: 'black', padding: '0px 10px', color: '#fff', display: 'flex', alignItems: 'center'}}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a href="/">
-            <img src={GuardianLogo} className="logo" alt="Guardian logo" draggable={false} />
-          </a>
+          <img src={GuardianLogo} className="logo" alt="Guardian logo" draggable={false} />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-end'}}>
           <ul>
+            <li/>
             <li><a href="/">Home</a></li>
             <li><a href="/">Generate</a></li>
             <li><a href="/">Login</a></li>
@@ -55,7 +53,6 @@ function FormContents() {
 
   const ResizableTextarea = () => {
     const [prompt, setPrompt] = useState('');
-    const [textareaHeight, setTextareaHeight] = useState('auto');
   
     const handleChange = (event) => {
       setPrompt(event.target.value);
@@ -66,7 +63,6 @@ function FormContents() {
         value={prompt}
         onChange={handleChange}
         placeholder="Enter your prompt here..."
-        style={{ width: '100%', height: textareaHeight, minHeight: '20px', marginRight: '10px' }}
       />
     );
   }
@@ -76,29 +72,21 @@ function FormContents() {
       <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
           <label htmlFor="prompt" style={{ textTransform: 'capitalize', padding: '0px 15px' }}></label>
           <ResizableTextarea />
+          <br/>
         <button type="submit">Submit</button>
       </form>
+      <div id="image" backgroundImage='url(${image})'/>
     </div>
   );
 }
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <header>
         <HeaderContents/>
       </header>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />} />
-        </Routes>
-      </BrowserRouter> */}
       <FormContents />
-      <div style={{ width: '100%', height: '100vh', display: 'flex', padding_left: '100px', margin_left: '100px'}}>
-          <img src="https://cdn.discordapp.com/attachments/1235298844007333948/1236449704754286602/img-R1huEPMOt2kasaP98Yia11oN.png?ex=66380d05&is=6636bb85&hm=28801a9b3bf753e37d4011ded685b12098539cf7e5fd21804a9c6ce92d3b08a0&" alt="generated" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-      </div>
     </>
   )
 }
