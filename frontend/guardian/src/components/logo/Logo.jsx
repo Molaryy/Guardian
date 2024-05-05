@@ -60,7 +60,7 @@ const Logo = ({user}) => {
             <motion.button variants={textVariants}>
               See our objectivs
             </motion.button>
-            <motion.button variants={textVariants}>Contact Us</motion.button>
+            <motion.button variants={textVariants}>Join the project</motion.button>
           </motion.div>
           <motion.img
             variants={textVariants}
