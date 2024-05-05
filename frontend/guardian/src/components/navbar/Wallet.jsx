@@ -10,6 +10,11 @@ const Wallet = () => {
 
     xumm.user.account.then(a => setAccount(a ?? ''))
 
+    const test = async  () => {
+        console.log(await xumm);
+    }
+    test();
+
     console.log(account);
     const logout = () => {
         xumm.logout()

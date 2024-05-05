@@ -4,12 +4,11 @@ import { AppService } from './app.service';
 import { OpenaiController } from './openai/openai.controller';
 import { OpenaiService } from './openai/openai.service';
 import { OpenaiModule } from './openai/openai.module';
-import { DbService } from './db/db.service';
-import { DbModule } from './db/db.module';
+import {AuthModule} from "./auth/auth.module";
 
 @Module({
-  imports: [OpenaiModule, DbModule],
+  imports: [OpenaiModule, AuthModule],
   controllers: [AppController],
-  providers: [AppService, DbService],
+  providers: [AppService],
 })
 export class AppModule {}
