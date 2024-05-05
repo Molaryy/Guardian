@@ -41,7 +41,7 @@ const sliderVariants = {
 };
 
 
-const Logo = () => {
+const Logo = ({user}) => {
   const [addFile, removeFile] = useFileSelection();
   return (
     <div className="hero">
@@ -68,9 +68,9 @@ const Logo = () => {
             src="/scroll.png"
             alt=""
           />
-          <Card className="dragndrop" actions={[]}>
+          {user ? <Card className="dragndrop" actions={[]}>
             <DragAndDrop addFile={addFile} removeFile={removeFile} />
-          </Card>
+          </Card> : ''}
         </motion.div>
       </div>
       <motion.div

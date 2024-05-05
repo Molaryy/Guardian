@@ -7,14 +7,16 @@ import Parallax from "./components/parallax/Parallax";
 import Projects from "./components/projects/Projects";
 import Services from "./components/services/Services";
 import { Button, Card } from 'antd';
+import {useState} from "react";
 
 const App = () => {
+    const [user, setUser] = useState('')
 
-  return (
+    return (
     <div>
       <section id="Homepage">
-        <Navbar />
-        <Logo />
+        <Navbar setUser={setUser}/>
+        <Logo user={user}/>
       </section>
       <section id="Services">
         <Parallax type="services" />
