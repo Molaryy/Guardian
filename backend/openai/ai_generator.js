@@ -3,6 +3,32 @@ const openai = require('openai');
 const bodyParser = require('body-parser');
 
 const app = express();
+
+class LLM {
+  constructor(model = "dall-e-3", chatHistory = [], configurationPrompt = "dalle") {
+    this.client = new openai.OpenAI();
+    this.model = model;
+    this.chatHistory = chatHistory;
+    this.configurationPrompt = configurationPrompt;
+  }
+
+  async askGPT(userInput) {
+    try {
+      const response = await this.client.images.generate({
+        model: this.model,
+        prompt: userInput,
+        size: "1024x1024",
+        quality: "standard",
+        n: 1
+      });
+      return response.data[0].url;
+    } catch (err) {
+      throw new Error(`Failed to generate response: ${err.message}`);
+    }
+  }
+}
+
+
 const llm = new LLM();
 
 // Body parser middleware
@@ -28,32 +54,7 @@ app.post('/openai', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// LLM class definition
-class LLM {
-  constructor(model = "dall-e-3", chatHistory = [], configurationPrompt = "dalle") {
-    this.client = new openai.OpenAI();
-    this.model = model;
-    this.chatHistory = chatHistory;
-    this.configurationPrompt = configurationPrompt;
-  }
-
-  async askGPT(userInput) {
-    try {
-      const response = await this.client.images.generate({
-        model: this.model,
-        prompt: userInput,
-        size: "1024x1024",
-        quality: "standard",
-        n: 1
-      });
-      return response.data[0].url;
-    } catch (err) {
-      throw new Error(`Failed to generate response: ${err.message}`);
-    }
-  }
-}
