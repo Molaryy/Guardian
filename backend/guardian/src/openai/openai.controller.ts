@@ -1,12 +1,15 @@
-import {Controller, Post} from '@nestjs/common';
+import {Controller, Post, Body } from '@nestjs/common';
 import {OpenaiService} from "./openai.service";
+import { CreateNFTDto } from './create-nft.dto';
+import { wallet } from 'xrpl';
 
 @Controller('openai')
 export class OpenaiController {
     constructor(private readonly openaiService: OpenaiService) {}
 
     @Post("/image")
-    transform_image_to_nft() {
-        return "salut";
+    createNFTFromImage(@Body() createNFTDto: CreateNFTDto) {
+        console.log(createNFTDto);
+        return this.openaiService.createNFTFromImage(createNFTDto, wallet);
     }
 }
