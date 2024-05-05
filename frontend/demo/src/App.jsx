@@ -9,11 +9,13 @@ import './App.css'
 function HeaderContents() {
   return (
     <>
-      <nav style={{ position: 'fixed', top: 0, height: '12%', width: '100%', backgroundColor: 'black', padding: '0px 10px', color: '#fff', }}>
+      <nav style={{ position: 'fixed', top: 0, left: 0, height: '12%', width: '100%', backgroundColor: 'black', padding: '0px 10px', color: '#fff', display: 'flex', alignItems: 'center'}}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <a href="/">
             <img src={GuardianLogo} className="logo" alt="Guardian logo" draggable={false} />
           </a>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-end'}}>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/">Generate</a></li>
@@ -70,7 +72,7 @@ function FormContents() {
   }
 
   return (
-    <div style={{position:'absolute', top:'20%', left:'50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '90%' }}>
+    <div style={{position:'absolute', top:'20%', left:'50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '65%' }}>
       <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
           <label htmlFor="prompt" style={{ textTransform: 'capitalize', padding: '0px 15px' }}></label>
           <ResizableTextarea />
