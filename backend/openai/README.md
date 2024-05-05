@@ -28,6 +28,8 @@ And then you can run the server:
 python3 ai_generator.py
 ```
 
+the server will be running on `http://localhost:5000`.
+
 ## Contributing
 
 ----
