@@ -32,10 +32,8 @@ To get started with this project, follow these steps:
 ## Technologies Used
 
 - React.js
-- Xaman Wallet SDK
-- HTML5
+- Xaman Wallet typescript SDK
 - SCSS
-- JavaScript
 
 ## Contributing
 
@@ -47,6 +45,4 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## Credits
 
-- Front-end developer :
-    .Elie Stroun
-    .Mohammed Jbilou
+- Front-end developer : Elie Stroun | Mohammed Jbilou
