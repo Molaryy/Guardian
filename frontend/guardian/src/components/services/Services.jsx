@@ -108,7 +108,7 @@ const Services = () => {
             POC resident.
             Front-end Developper + Demo.
           </p>
-          <a href="">https://www.linkedin.com/in/hugo-hamet/
+          <a href="https://www.linkedin.com/in/hugo-hamet/">
               <button className="linkedin">Go to Linkedin</button>
           </a>
         </motion.div>

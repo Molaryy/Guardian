@@ -25,12 +25,12 @@ const DragAndDrop = ({ addFile, removeFile }) => {
         accept="image/*"
       >
         <p className="ant-upload-drag-icon">
-          <PlusOutlined />
+          <PlusOutlined/>
         </p>
         <p className="ant-upload-text">
           Click this area or drag files to upload
         </p>
-      </Dragger>
+      </Dragger >
       {previewContent}
     </>
   );
