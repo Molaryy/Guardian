@@ -19,19 +19,26 @@ const openai = new OpenAI({
 app.use(cors());
 
 app.post('/openai', async (req, res) => {
-  const resu = await openai.images.generate({
-    model: "dall-e-3",
-    prompt: req.body.prompt,
-    n: 1,
-    size: '1024x1024'
-  })
-  const url = resu.data[0].url;
-  console.log(url)
+  try {
+    const resu = await openai.images.generate({
+      model: "dall-e-3",
+      prompt: req.body.prompt,
+      n: 1,
+      size: '1024x1024'
+    })
+    const url = resu.data[0].url;
+    console.log(url)
 
-  res.status(200).json({
-    success: true,
-    data: url
-  });
+    res.status(200).json({
+      success: true,
+      data: url
+    });
+  } catch (e) {
+    res.status(404).json({
+      success: true,
+      data: "not found"
+    });
+  }
 });
 
 app.use(express.static('public'));
