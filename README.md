@@ -18,7 +18,7 @@ where a NFT will be created.
 to get started, first make the getting started of frontend ([README](frontend/README.md)), then make the getting stated of the backend ([README](backend/openai/README.md)).
 
 ## Contributors
-| Mohamed Jbiou                                             | Gustave Delecroix                                       | Hugo Hamet                                                   | Elie Stroun                                                    | Matthias von Rakowski                                                 |
+| Mohamed Jbilou                                             | Gustave Delecroix                                       | Hugo Hamet                                                   | Elie Stroun                                                    | Matthias von Rakowski                                                 |
 |-----------------------------------------------------------|---------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | <img src="https://github.com/molaryy.png" width="400em"/> | <img src="https://github.com/57ave.png" width="400em"/> | <img src="https://github.com/hugo-hamet.png" width="400em"/> | <img src="https://github.com/eliestroun14.png" width="400em"/> | <img src="https://github.com/matthiasvonrakowski.png" width="400em"/> |
 
