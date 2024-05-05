@@ -8,8 +8,8 @@ export class OpenaiController {
     constructor(private readonly openaiService: OpenaiService) {}
 
     @Post("/image")
-    createNFTFromImage(@Body() createNFTDto: createNFTDto) {
-        console.log(createNFTDto);
-        return this.openaiService.createNFTFromImage(createNFTDto, Wallet);
+    createNFTFromImage(@Body() createNFTDto: createNFTDto, wallet: Wallet) {
+    console.log(createNFTDto);
+        return this.openaiService.createNFTFromImage(createNFTDto, wallet);
     }
 }
