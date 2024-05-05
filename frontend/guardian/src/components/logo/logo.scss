@@ -85,8 +85,21 @@
   .dragndrop {
     position: absolute;
     margin-left: 55rem;
-    height: 50%;
-    width: 25%;
+    width: 400px;
+    height: 500px;
+  }
+
+  .dragndrop-button {
+    z-index: 1;
+    position: absolute;
+    margin-left: 55rem;
+    margin-top: 35rem;
+    background-color: rebeccapurple;
+    border-radius: 15px;
+    width: 400px;
+    height: 35px;
+    align-content: center;
+    align-items: center;
   }
 
   .slidingTextContainer {
@@ -99,3 +112,8 @@
     font-weight: bold;
   }
 }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+  }

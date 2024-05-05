@@ -19,7 +19,7 @@ const items = [
     id: 'gen-ia',
     title: "A detection and comparison system of art projects",
     img: "../public/gen-ia2.jpg",
-    desc: "We want to offer a search tool in our database to certify your production and guarantee transparency in the artistic professions (cinema, drawings, literature) or with regard to faculties (dissertations).",
+    desc: "We want to offer a search tool in our database to certify your production and guarantee transparency in the artistic professions (cinema, drawings, literature) or with regard to faculties (dissertations, etc).",
   },
 ];
 

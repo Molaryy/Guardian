@@ -21,7 +21,6 @@ const Wallet = ({setUser}) => {
     }
 
 
-
     const shortenedAddress = account ?  account?.substring(0, 2) + "..." + account?.substring(account?.length - 5) : '';
 
     return (
