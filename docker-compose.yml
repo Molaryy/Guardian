@@ -8,6 +8,12 @@ services:
     build: backend/guardian
     ports:
       - "${GUARDIAN_BACK_PORT}:${GUARDIAN_BACK_PORT}"
-    depends_on:
-      - database
+    restart: always
+  back_openai:
+    container_name: openai
+    env_file:
+      - .env
+    build: backend/openai
+    ports:
+      - "${GUARDIAN_BACK_PORT_OPENAI}:${GUARDIAN_BACK_PORT_OPENAI}"
     restart: always
