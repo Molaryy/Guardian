@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Button, Card } from 'antd';
 import DragAndDrop from './DragAndDrop';
 import useFileSelection from './UseFileSelection';
+import { Spinner } from '@chakra-ui/react';
+import { useState } from "react";
 
 const textVariants = {
   initial: {
@@ -42,6 +44,24 @@ const sliderVariants = {
 
 
 const Logo = ({user}) => {
+  const [spin, setSpin] = useState(false);
+
+  const verifyCertification = async () => {
+    setSpin(true);
+    /* const res = await fetch("http://localhost:3000/image/verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        adress: user,
+      }),
+    })
+    if (res.status != 200) {
+      // TODO: handle failing
+    }
+    // TODO: certified */
+  }
   const [addFile, removeFile] = useFileSelection();
   return (
     <div className="hero">
@@ -60,7 +80,7 @@ const Logo = ({user}) => {
             <motion.button variants={textVariants}>
               See our objectivs
             </motion.button>
-            <motion.button variants={textVariants}>Contact Us</motion.button>
+            <motion.button variants={textVariants}>Join the project</motion.button>
           </motion.div>
           <motion.img
             variants={textVariants}
@@ -71,6 +91,20 @@ const Logo = ({user}) => {
           {user ? <Card className="dragndrop" actions={[]}>
             <DragAndDrop addFile={addFile} removeFile={removeFile} />
           </Card> : ''}
+          {user ? <button className="dragndrop-button" onClick={verifyCertification} >
+            {
+              spin? (
+                <Spinner
+                  className="spinner"
+                  speed='0.65s'
+                  color='blue.500'
+                  size='xl'
+                />
+              ) : (
+                "Verify"
+              )
+            }
+            </button> : ''}
         </motion.div>
       </div>
       <motion.div
