@@ -1,60 +1,40 @@
 const express = require('express');
-const openai = require('openai');
 const bodyParser = require('body-parser');
+const dotenv = require("dotenv");
+const cors = require('cors'); // Import CORS middleware
+const axios = require('axios'); // Import axios for making HTTP requests
+const bodyparser = require('body-parser');
+const OpenAI = require("openai")
+
+dotenv.config()
 
 const app = express();
+app.use(bodyparser.json());
+const port = 5001;
 
-class LLM {
-  constructor(model = "dall-e-3", chatHistory = [], configurationPrompt = "dalle") {
-    this.client = new openai.OpenAI();
-    this.model = model;
-    this.chatHistory = chatHistory;
-    this.configurationPrompt = configurationPrompt;
-  }
-
-  async askGPT(userInput) {
-    try {
-      const response = await this.client.images.generate({
-        model: this.model,
-        prompt: userInput,
-        size: "1024x1024",
-        quality: "standard",
-        n: 1
-      });
-      return response.data[0].url;
-    } catch (err) {
-      throw new Error(`Failed to generate response: ${err.message}`);
-    }
-  }
-}
-
-
-const llm = new LLM();
-
-// Body parser middleware
-app.use(bodyParser.json());
-
-// Enable CORS
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 });
 
-// Route to handle POST requests to /openai
-app.post('/openai', (req, res) => {
-  try {
-    const prompt = req.body.prompt;
-    const msg = llm.askGPT(prompt);
-    res.json({ url: msg });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+app.use(cors());
+
+app.post('/openai', async (req, res) => {
+  const resu = await openai.images.generate({
+    model: "dall-e-3",
+    prompt: req.body.prompt,
+    n: 1,
+    size: '1024x1024'
+  })
+  const url = resu.data[0].url;
+  console.log(url)
+
+  res.status(200).json({
+    success: true,
+    data: url
+  });
 });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.use(express.static('public'));
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });

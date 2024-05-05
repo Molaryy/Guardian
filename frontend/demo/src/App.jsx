@@ -46,7 +46,8 @@ function FormContents() {
         })
       });
       let resJson = await res.json();
-      if (res.status != 200) {
+      setImage(resJson.data);
+      if (res.status !== 200) {
         console.log("There was an error:")
         console.log(res)
         setImage('./src/assets/image_error.png')
@@ -57,7 +58,7 @@ function FormContents() {
     }
     setPrompt("")
   };
-
+console.log(image)
   return (
     <div style={{position:'absolute', top:'20%', left:'50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '65%' }}>
       <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
