@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
 import createNFTDto from "./creat-nft.dto";
-import {Client, NFTokenMintFlags, Wallet} from 'xrpl';
+import {Client, NFTokenMint, NFTokenMintFlags, convertStringToHex, Wallet} from 'xrpl';
 
 dotenv.config;
 
@@ -69,24 +69,26 @@ export class OpenaiService {
 
   async mintNFT(
     createNFTDto: createNFTDto,
-    flags: number,
     tokenTaxon: number,
     wallet: Wallet,
   ) {
     const client = new Client("wss://s.altnet.rippletest.net:51233");
 
     const transactionJson = {
-      TransactionType: 'NFTokenMint',
+      TransactionType: "NFTokenMint",
       Account: wallet.address,
-      Flags: NFTokenMintFlags,
-      NFTokenTaxon: tokenTaxon,
+      Flags: NFTokenMintFlags.tfOnlyXRP,
+      TransferFee: 0.12,
+      NFTokenTaxon: 1,
       URI: createNFTDto,
-    }
-    const tx = await client.submitAndWait(transactionJson);
+  }
+  const tx = await client.submitAndWait(transactionJson, wallet);
     return tx
   }
 
-  async createNFTFromImage(@Body() createNFTDto: createNFTDto, wallet: Wallet) {
-    this.mintNFT(createNFTDto, lsfOnlyXRP, 1, wallet);
+  async createNFTFromImage(
+    @Body() createNFTDto: createNFTDto,
+    wallet: Wallet) {
+    this.mintNFT(createNFTDto, 1, wallet);
   }
 }
