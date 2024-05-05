@@ -27,6 +27,7 @@ function HeaderContents() {
 
 function FormContents() {
   const [prompt, setPrompt] = useState('');
+  const [image, setImage] = useState('./src/assets/placeholder.png');
 
   const handleChange = (event) => {
     setPrompt(event.target.value);
@@ -35,7 +36,7 @@ function FormContents() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(" http://127.0.0.1:5000/openai", {
+      let res = await fetch(import.meta.env.VITE_OPENAI_BACKEND_URL, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -45,16 +46,19 @@ function FormContents() {
         })
       });
       let resJson = await res.json();
-      if (res.status != 200) {
+      setImage(resJson.data);
+      if (res.status !== 200) {
         console.log("There was an error:")
         console.log(res)
+        setImage('./src/assets/image_error.png')
       }
     } catch (err) {
       console.log(err);
+      setImage('./src/assets/image_error.png')
     }
     setPrompt("")
   };
-
+console.log(image)
   return (
     <div style={{position:'absolute', top:'20%', left:'50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '65%' }}>
       <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
@@ -66,7 +70,11 @@ function FormContents() {
           /><br/>
         <button type="submit">Submit</button>
       </form>
-      <div id="image"/>
+      <img
+        src={image}
+        width="300" height="300"
+        text-align="left" style={{display:'block'}}
+      />
     </div>
   );
 }
