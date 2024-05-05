@@ -1,5 +1,8 @@
 import "./logo.scss";
 import { motion } from "framer-motion";
+import { Button, Card } from 'antd';
+import DragAndDrop from './DragAndDrop';
+import useFileSelection from './UseFileSelection';
 
 const textVariants = {
   initial: {
@@ -37,7 +40,9 @@ const sliderVariants = {
   },
 };
 
+
 const Logo = () => {
+  const [addFile, removeFile] = useFileSelection();
   return (
     <div className="hero">
       <div className="wrapper">
@@ -63,6 +68,9 @@ const Logo = () => {
             src="/scroll.png"
             alt=""
           />
+          <Card className="dragndrop" actions={[]}>
+            <DragAndDrop addFile={addFile} removeFile={removeFile} />
+          </Card>
         </motion.div>
       </div>
       <motion.div
@@ -73,7 +81,6 @@ const Logo = () => {
       >
         Bring control between art and IA
       </motion.div>
-      
     </div>
   );
 };

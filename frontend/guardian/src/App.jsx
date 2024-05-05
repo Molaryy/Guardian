@@ -6,15 +6,17 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Projects from "./components/projects/Projects";
 import Services from "./components/services/Services";
+import { Button, Card } from 'antd';
 
 const App = () => {
+
   return (
     <div>
       <section id="Homepage">
         <Navbar />
-        <Logo/>
+        <Logo />
       </section>
-      <section id="Services"> 
+      <section id="Services">
         <Parallax type="services" />
       </section>
       <section>
