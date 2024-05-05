@@ -15,7 +15,7 @@ where a NFT will be created.
 
 ## Getting Started
 
-to get started, first make the getting started of frontend ([README](frontend/README.md)), then make the getting stated of the backend ([README](backend/README.md)).
+to get started, first make the getting started of frontend ([README](frontend/README.md)), then make the getting stated of the backend ([README](backend/openai/README.md)).
 
 ## Contributors
 | Mohamed Jbiou                                             | Gustave Delecroix                                       | Hugo Hamet                                                   | Elie Stroun                                                    | Matthias von Rakowski                                                 |
