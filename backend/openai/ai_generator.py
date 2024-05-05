@@ -20,7 +20,7 @@ class LLM():
 llm = LLM()
 app = Flask(__name__)
 
-@app.route('/openai/endpoint', methods=['POST', 'OPTIONS'])
+@app.route('/openai', methods=['POST', 'OPTIONS'])
 def get_prompt():
     if request.method == 'OPTIONS':
         return _build_cors_preflight_response()

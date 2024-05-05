@@ -1,4 +1,4 @@
-FROM node:20.9.0-alpine
+FROM node:18
 WORKDIR /guardian
 COPY package.json yarn.lock ./
 RUN yarn install
