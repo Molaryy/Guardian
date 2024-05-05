@@ -26,7 +26,11 @@ function HeaderContents() {
 }
 
 function FormContents() {
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
+
+  const handleChange = (event) => {
+    setPrompt(event.target.value);
+  };
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,31 +55,18 @@ function FormContents() {
     setPrompt("")
   };
 
-  const ResizableTextarea = () => {
-    const [prompt, setPrompt] = useState('');
-  
-    const handleChange = (event) => {
-      setPrompt(event.target.value);
-    };
-  
-    return (
-      <textarea
-        value={prompt}
-        onChange={handleChange}
-        placeholder="Enter your prompt here..."
-      />
-    );
-  }
-
   return (
     <div style={{position:'absolute', top:'20%', left:'50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '65%' }}>
       <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
           <label htmlFor="prompt" style={{ textTransform: 'capitalize', padding: '0px 15px' }}></label>
-          <ResizableTextarea />
-          <br/>
+          <textarea
+            value={prompt}
+            onChange={handleChange}
+            placeholder="Enter your prompt here..."
+          /><br/>
         <button type="submit">Submit</button>
       </form>
-      <div id="image" backgroundImage='url(${image})'/>
+      <div id="image"/>
     </div>
   );
 }
