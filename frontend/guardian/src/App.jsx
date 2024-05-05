@@ -6,15 +6,19 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Projects from "./components/projects/Projects";
 import Services from "./components/services/Services";
+import { Button, Card } from 'antd';
+import {useState} from "react";
 
 const App = () => {
-  return (
+    const [user, setUser] = useState('')
+
+    return (
     <div>
       <section id="Homepage">
-        <Navbar />
-        <Logo/>
+        <Navbar setUser={setUser}/>
+        <Logo user={user}/>
       </section>
-      <section id="Services"> 
+      <section id="Services">
         <Parallax type="services" />
       </section>
       <section>

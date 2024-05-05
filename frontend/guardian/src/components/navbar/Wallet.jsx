@@ -5,14 +5,18 @@ import './navbar.scss'
 
 const xumm = new Xumm(import.meta.env.VITE_XAMAN_API_KEY)
 
-const Wallet = () => {
+const Wallet = ({setUser}) => {
     const [account, setAccount] = useState('')
 
-    xumm.user.account.then(a => setAccount(a ?? ''))
+    xumm.user.account.then(a => {
+        setUser(a ?? '');
+        setAccount(a ?? '')
+    })
 
     console.log(account);
     const logout = () => {
         xumm.logout()
+        setUser('');
         setAccount('')
     }
 

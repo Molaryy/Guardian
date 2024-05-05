@@ -3,7 +3,7 @@ import "./navbar.scss";
 import { motion } from "framer-motion";
 import Wallet from "./Wallet.jsx";
 
-const Navbar = () => {
+const Navbar = ({setUser}) => {
   return (
     <div className="navbar">
       {/* Sidebar */}
@@ -18,7 +18,7 @@ const Navbar = () => {
                     <img src="/logo-white.png" alt=""/>
                 </div>
             </motion.span>
-            <Wallet/>
+            <Wallet setUser={setUser}/>
         </div>
     </div>
   );
