@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend:
+    container_name: guardian_back
+    env_file:
+      - .env
+    build: backend/guardian
+    ports:
+      - "${GUARDIAN_BACK_PORT}:${GUARDIAN_BACK_PORT}"
+    restart: always
+  back_openai:
+    container_name: openai
+    env_file:
+      - .env
+    build: backend/openai
+    ports:
+      - "${GUARDIAN_BACK_PORT_OPENAI}:${GUARDIAN_BACK_PORT_OPENAI}"
+    restart: always
