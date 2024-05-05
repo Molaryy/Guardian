@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  backend:
+    container_name: guardian_back
+    env_file:
+      - .env
+    build: backend/guardian
+    ports:
+      - "${GUARDIAN_BACK_PORT}:${GUARDIAN_BACK_PORT}"
+    depends_on:
+      - database
+    restart: always

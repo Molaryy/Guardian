@@ -1,0 +1,37 @@
+name: Guardian
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build-front-guardian:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build frontend guardian
+        run: |
+          cd frontend/guardian/
+          yarn install
+          yarn build
+  build-front-demo:
+    needs: [build-front-guardian]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build frontend demo
+        run: |
+          cd frontend/demo/
+          yarn install
+          yarn build
+  build-back-guardian:
+    needs: [ build-front-demo ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build backend guardian
+        run: |
+          cd backend/guardian
+          yarn install
+          yarn build
