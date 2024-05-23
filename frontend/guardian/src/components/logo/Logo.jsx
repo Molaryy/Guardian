@@ -5,6 +5,7 @@ import DragAndDrop from './DragAndDrop';
 import useFileSelection from './UseFileSelection';
 import { Spinner } from '@chakra-ui/react';
 import { useState } from "react";
+import {  Client,  Payment, xrpToDrops }  from "xrpl"
 
 const textVariants = {
   initial: {
@@ -45,22 +46,36 @@ const sliderVariants = {
 
 const Logo = ({user}) => {
   const [spin, setSpin] = useState(false);
+  const [certification, setCertification] = useState("Verify")
 
   const verifyCertification = async () => {
     setSpin(true);
-    /* const res = await fetch("http://localhost:3000/image/verify", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        adress: user,
-      }),
+    const client = new Client("wss://s.altnet.rippletest.net:51233", {
+
     })
-    if (res.status != 200) {
-      // TODO: handle failing
-    }
-    // TODO: certified */
+    console.log("lets get started...");
+    await client.connect();
+
+    // do something interesting here
+    console.log(client);
+    const { wallet: wallet1, balance: balance1 } = await client.fundWallet()
+    const { wallet: wallet2, balance: balance2 } = await client.fundWallet()
+    const tx = {
+      TransactionType: "Payment",
+      Account: wallet1.classicAddress,
+      Destination: wallet2.classicAddress,
+      Amount: xrpToDrops("13")
+    };
+
+    await client.submitAndWait(tx, {
+      autofill: true,
+      wallet: wallet1,
+    });
+    await client.disconnect();
+    setSpin(false);
+    setCertification("Certified!")
+
+    console.log("all done!");
   }
   const [addFile, removeFile] = useFileSelection();
   return (
@@ -101,7 +116,7 @@ const Logo = ({user}) => {
                   size='xl'
                 />
               ) : (
-                "Verify"
+                  certification
               )
             }
             </button> : ''}

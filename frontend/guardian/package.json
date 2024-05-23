@@ -12,6 +12,8 @@
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emailjs/browser": "^3.11.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "antd": "^5.17.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^10.16.4",
